@@ -1,0 +1,28 @@
+.logo {
+  width: 10rem;
+}
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.banner {
+  position: relative;
+  top: 70px;
+  height: 400px;
+  background-image: url(../../images/bannerbackground.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 93rem 25rem;
+  margin-bottom: 150px
+  /* position: absolute; */
+}
+.search-box h2 {
+  letter-spacing: 5px;
+}
+.search-area {
+  width: 33rem;
+  margin: auto;
+}
