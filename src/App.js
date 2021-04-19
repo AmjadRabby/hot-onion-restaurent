@@ -4,6 +4,8 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home/Home";
 import Footer from "./components/Footer/Footer";
+import FoodDetails from "./components/Home/Food/FoodDetails";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 export const FoodContext = createContext();
 function App() {
@@ -15,9 +17,12 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          {/* <Route path="/fooddetails/:foodId">
-          <FoodDetails/>
-        </Route> */}
+          <Route path="/food-details/:foodId">
+            <FoodDetails />
+          </Route>
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </Switch>
         <Footer />
       </Router>

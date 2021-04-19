@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import "./food.css";
 import { useState } from "react";
 import FoodItem from "./FoodItem";
-import {Data} from "../../../fakeData/Data";
+import { data } from "../../../fakeData/Data";
+import { addToCart } from "../../../redux/actions/cartAction";
+import { connect } from "react-redux";
 
-const Food = () => {
+const Food = (props) => {
   const [foods, setFoods] = useState([]);
   const [category, setCategory] = useState("lunch");
-  // console.log(foods);
+  const { cart, addToCart } = props;
+  // console.log("cart", cart, "event", addToCart);
 
   useEffect(() => {
-    const selected = Data.filter((food) => food.category === category);
+    const selected = data.filter((food) => food.category === category);
     setFoods(selected);
   }, [category]);
 
@@ -54,10 +57,25 @@ const Food = () => {
         ))}
       </div>
       <div className="text-center">
-        <button className="btn btn-secondary px-5">Chekout your food</button>
+        <button
+          className={
+            cart.length ? "btn btn-danger px-5" : "btn btn-secondary px-5"
+          }
+        >
+          Checkout your food
+        </button>
       </div>
     </section>
   );
 };
 
-export default Food;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+  };
+};
+const mapDispatchToProps = {
+  addToCart: addToCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Food);

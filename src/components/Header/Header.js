@@ -1,52 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import logo from "../../images/logo2.png";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Headar = () => {
+const Header = (props) => {
+  const [click, setClick] = useState(true);
+
+  // console.log(props);
   return (
     <header className="position-relative">
       <nav className="navbar navbar-expand-lg w-100 navbar-white bg-white">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to="/" className="navbar-brand">
             <img className="logo" src={logo} alt="" />
-          </a>
+          </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-danger px-3"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarText"
             aria-controls="navbarText"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            onClick={() => setClick(!click)}
           >
-            <span className="navbar-toggler-icon"></span>
+            {click ? (
+              <FaBars className="text-light" />
+            ) : (
+              <FaTimes className="text-light" />
+            )}
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
-                  className="nav-link text-dark bg-light rounded-pill font-weight-bold px-4"
-                  href="#"
+                <Link
+                  className={
+                    props.cart.length
+                      ? "nav-link  text-white bg-danger rounded-pill font-weight-bold px-4"
+                      : "nav-link d-flex justify-content-center align-items-center text-dark bg-light rounded-pill font-weight-bold px-4"
+                  }
                 >
-                  <FaCartPlus />
-                </a>
+                  <FaCartPlus className="mr-1" /> {props.cart.length}
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-dark bg-light rounded-pill font-weight-bold px-4 mx-1"
                   href="#"
                 >
                   Login
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-light bg-danger rounded-pill font-weight-bold px-4"
                   href="#"
                 >
                   Sign up
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -72,4 +85,10 @@ const Headar = () => {
   );
 };
 
-export default Headar;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

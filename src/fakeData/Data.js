@@ -2,13 +2,14 @@ import delivery1 from "../images/image/delivery1.png";
 import delivery2 from "../images/image/delivery2.png";
 import delivery3 from "../images/image/delivery3.png";
 
-export const Data = [
+export const data = [
   {
     foodId: 1,
     category: "breakfast",
     name: "Eggs Benedict",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "10.99",
     image: "https://i.ibb.co/HqdpNBw/breakfast1.png",
   },
@@ -17,7 +18,8 @@ export const Data = [
     category: "breakfast",
     name: "Breakfast sandwich",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 10.99,
     image: "https://i.ibb.co/Cs6ZwTG/breakfast2.png",
   },
@@ -26,7 +28,8 @@ export const Data = [
     category: "breakfast",
     name: "Baked Chicken",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 10.99,
     image: "https://i.ibb.co/w06mMNY/breakfast3.png",
   },
@@ -35,7 +38,8 @@ export const Data = [
     category: "breakfast",
     name: "Bagel cream cheese",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 10.99,
     image: "https://i.ibb.co/jZY5SL5/breakfast4.png",
   },
@@ -44,7 +48,8 @@ export const Data = [
     category: "breakfast",
     name: "Toast Croissant",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "10.99",
     image: "https://i.ibb.co/P9PNdDx/breakfast5.png",
   },
@@ -53,7 +58,8 @@ export const Data = [
     category: "breakfast",
     name: "Full Breakfast Fried Egg Toast Brunch",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "10.99",
     image: "https://i.ibb.co/bmD6pf4/breakfast6.png",
   },
@@ -62,7 +68,8 @@ export const Data = [
     category: "lunch",
     name: "Beef Steak",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 15.99,
     image: "https://i.ibb.co/Gpny7n7/lunch1.png",
   },
@@ -71,7 +78,8 @@ export const Data = [
     category: "lunch",
     name: "Honey-Soy-Glazed Salmon",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 15.99,
     image: "https://i.ibb.co/RYn3Z8w/lunch2.png",
   },
@@ -80,7 +88,8 @@ export const Data = [
     category: "lunch",
     name: "Tarragon-Rubbed-Salmon",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 15.99,
     image: "https://i.ibb.co/YZrLHXd/lunch3.png",
   },
@@ -89,7 +98,8 @@ export const Data = [
     category: "lunch",
     name: "Indian Lunch",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "15.99",
     image: "https://i.ibb.co/JHbfNy5/lunch4.png",
   },
@@ -98,7 +108,8 @@ export const Data = [
     category: "lunch",
     name: "Healthy Meal Plan",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "15.99",
     image: "https://i.ibb.co/p0rF4JW/lunch5.png",
   },
@@ -107,7 +118,8 @@ export const Data = [
     category: "lunch",
     name: "Fried Chicken Bento",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 15.99,
     image: "https://i.ibb.co/nQ69bd1/lunch6.png",
   },
@@ -116,7 +128,8 @@ export const Data = [
     category: "dinner",
     name: "Baked Chicken",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "12.99",
     image: "https://i.ibb.co/TYRQSq1/dinner1.png",
   },
@@ -125,7 +138,8 @@ export const Data = [
     category: "dinner",
     name: "Lemony Salmon Piccata",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "12.99",
     image: "https://i.ibb.co/Sf233Wp/dinner2.png",
   },
@@ -134,7 +148,8 @@ export const Data = [
     category: "dinner",
     name: "Garlic Butter Baked Salmon",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "12.99",
     image: "https://i.ibb.co/9qSzR9V/dinner3.png",
   },
@@ -143,7 +158,8 @@ export const Data = [
     category: "dinner",
     name: "French Fries with Cheese",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "12.99",
     image: "https://i.ibb.co/k2MGDR8/dinner4.png",
   },
@@ -152,7 +168,8 @@ export const Data = [
     category: "dinner",
     name: "Pork Tenderloin With Quinoa Pilaf",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: 12.99,
     image: "https://i.ibb.co/qxT7mWb/dinner5.png",
   },
@@ -161,7 +178,8 @@ export const Data = [
     category: "dinner",
     name: "Salmon with Grapefruits and Lentil Salad",
     title: "How we dream about our future",
-    description: "",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam quidem temporibus nobis porro sapiente ipsam aut corporis atque, ullam laboriosam soluta optio rerum illum id possimus nemo dignissimos blanditiis mollitia ab ad deserunt officiis necessitatibus. ",
     price: "12.99",
     image: "https://i.ibb.co/88gssVR/dinner6.png",
   },
