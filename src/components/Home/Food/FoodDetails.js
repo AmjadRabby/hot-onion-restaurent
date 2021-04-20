@@ -4,26 +4,26 @@ import { data } from "../../../fakeData/Data";
 import { FaCartPlus } from "react-icons/fa";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { addToCart } from "../../../redux/actions/cartAction";
+import { addToCart, removeFromCart } from "../../../redux/actions/cartAction";
 import { connect } from "react-redux";
+import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
 
 const FoodDetails = (props) => {
-  const { foodId } = useParams();
-  const [count, setCount] = useState(0);
+  const { id } = useParams();
   const [item, setItem] = useState({});
   const [category, setCategory] = useState([]);
-  const { name, description, title, price, image } = item;
-
-  // console.log(props);
+  const { name, description, price, image, foodId } = item;
+  const { cart, addToCart, removeFromCart } = props;
 
   useEffect(() => {
-    const matchFood = data.find((food) => food.foodId === Number(foodId));
+    const matchFood = data.find((food) => food.foodId === Number(id));
     const matchCategory = data.filter(
       (food) => food.category === matchFood.category
     );
     setItem(matchFood);
     setCategory(matchCategory);
-  }, [foodId]);
+  }, [id]);
 
   const responsive = {
     superLargeDesktop: {
@@ -45,62 +45,72 @@ const FoodDetails = (props) => {
     },
   };
   return (
-    <section className="container">
-      <div className="row mb-5">
-        <div className="col-md-6 ">
-          <div className="mb-5">
-            <h1 className="font-weight-bold mb-4">{name}</h1>
-            <p className="text-secondary mb-4">{description}</p>
-            <div className="d-flex">
-              <h2 className="font-weight-bold">${price}</h2>
-              <div className="d-flex justify-content-center align-items-center border rounded-pill px-3 mx-3 mb-4">
-                <h2
-                  className="brand-color-hover"
-                  onClick={() => setCount(count - 1)}
-                >
-                  -
-                </h2>
-                <h6 className="px-4 w-100">{count}</h6>
+    <main>
+      <Header/>
+      <section className="container">
+        <div className="row mb-5">
+          <div className="col-md-6 ">
+            <div className="mb-5">
+              <h1 className="font-weight-bold mb-4">{name}</h1>
+              <p className="text-secondary mb-4">{description}</p>
+              <div className="d-flex">
+                <h2 className="font-weight-bold">${price}</h2>
+                <div className="d-flex justify-content-center align-items-center border rounded-pill px-3 mx-3 mb-4">
+                  <h2
+                    className="brand-color-hover"
+                    onClick={() => removeFromCart(cart.cartId)}
+                  >
+                    -
+                  </h2>
+                  <h6 className="px-4 w-100">{cart.length}</h6>
 
-                <h4
-                  className="brand-color-hover"
-                  onClick={() => setCount(count + 1)}
-                >
-                  +
-                </h4>
+                  <h4
+                    className="brand-color-hover"
+                    onClick={() => addToCart(item)}
+                  >
+                    +
+                  </h4>
+                </div>
               </div>
+              <Link
+                to="/"
+                onClick={() => addToCart(item)}
+                className={
+                  cart.length
+                    ? "btn bg-danger d-flex w-25 align-items-center rounded-pill font-weight-bold text-white px-4"
+                    : "btn bg-light d-flex w-25 align-items-center rounded-pill font-weight-bold px-4"
+                }
+              >
+                {" "}
+                <FaCartPlus className="mr-2" /> ADD
+              </Link>
             </div>
-            <button
-              onClick={() => props.addToCart()}
-              className="btn btn-danger d-flex  align-items-center rounded-pill px-4"
-            >
-              {" "}
-              <FaCartPlus className="mr-2" /> ADD
-            </button>
-          </div>
 
-          <div className="mt-5 py-5">
-            <Carousel responsive={responsive}>
-              {category.map((item) => (
-                <Link
-                  className="text-decoration-none"
-                  to={"/food-details/" + item.foodId}
-                >
-                  <img src={item.image} alt="" className="img-fluid px-3" />
-                </Link>
-              ))}
-            </Carousel>
+            <div className="mt-5 py-5">
+              <Carousel responsive={responsive}>
+                {category.map((item) => (
+                  <Link
+                    key={item.foodId}
+                    className="text-decoration-none"
+                    to={"/food-details/" + item.foodId}
+                  >
+                    <img src={item.image} alt="" className="img-fluid px-3" />
+                  </Link>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <img
+              className="img-fluid w-100 p-5 shadow rounded-circle"
+              src={image}
+              alt=""
+            />
           </div>
         </div>
-        <div className="col-md-6">
-          <img
-            className="img-fluid w-100 p-5 shadow rounded-circle"
-            src={image}
-            alt=""
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+      <Footer/>
+    </main>
   );
 };
 
@@ -112,5 +122,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   addToCart: addToCart,
+  removeFromCart: removeFromCart,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FoodDetails);

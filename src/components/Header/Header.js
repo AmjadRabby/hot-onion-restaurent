@@ -8,9 +8,11 @@ import { connect } from "react-redux";
 const Header = (props) => {
   const [click, setClick] = useState(true);
 
-  // console.log(props);
+
   return (
-    <header className="position-relative">
+    <header
+      className="position-relative"
+    >
       <nav className="navbar navbar-expand-lg w-100 navbar-white bg-white">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
@@ -36,6 +38,7 @@ const Header = (props) => {
             <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
+                  to="/cart-review"
                   className={
                     props.cart.length
                       ? "nav-link  text-white bg-danger rounded-pill font-weight-bold px-4"
@@ -47,8 +50,8 @@ const Header = (props) => {
               </li>
               <li className="nav-item">
                 <Link
+                  to="/login"
                   className="nav-link text-dark bg-light rounded-pill font-weight-bold px-4 mx-1"
-                  href="#"
                 >
                   Login
                 </Link>
@@ -56,7 +59,7 @@ const Header = (props) => {
               <li className="nav-item">
                 <Link
                   className="nav-link text-light bg-danger rounded-pill font-weight-bold px-4"
-                  href="#"
+                  to="/login"
                 >
                   Sign up
                 </Link>

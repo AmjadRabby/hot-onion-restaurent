@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Footer = () => {
   return (
-    <footer className=" bg-dark">
+    <footer className="mt-5 bg-dark">
       <section className="container pt-5 pb-5">
         <div className="row">
           <div className="col-6">
-            <img src={logo} alt="" className="logo" />
+            <Link to="/">
+              <img src={logo} alt="" className="logo" />
+            </Link>
           </div>
           <div className="col-3">
             <ul className="list-unstyled">
