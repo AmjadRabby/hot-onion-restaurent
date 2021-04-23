@@ -5,12 +5,12 @@ import FoodItem from "./FoodItem";
 import { data } from "../../../fakeData/Data";
 import { addToCart } from "../../../redux/actions/cartAction";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Food = (props) => {
   const [foods, setFoods] = useState([]);
   const [category, setCategory] = useState("lunch");
-  const { cart, addToCart } = props;
-  // console.log("cart", cart, "event", addToCart);
+  const { cart } = props;
 
   useEffect(() => {
     const selected = data.filter((food) => food.category === category);
@@ -57,13 +57,14 @@ const Food = (props) => {
         ))}
       </div>
       <div className="text-center">
-        <button
+        <Link
+          to="/delivery-details"
           className={
             cart.length ? "btn btn-danger px-5" : "btn btn-secondary px-5"
           }
         >
           Checkout your food
-        </button>
+        </Link>
       </div>
     </section>
   );

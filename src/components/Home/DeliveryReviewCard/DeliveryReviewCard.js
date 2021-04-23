@@ -3,7 +3,7 @@ import { DeliveryData } from "../../../fakeData/Data";
 import { FaBusAlt, FaArrowCircleRight } from "react-icons/fa";
 
 const DeliveryReviewCard = () => {
-  const [delivery, setdelivery] = useState(DeliveryData);
+  const [delivery] = useState(DeliveryData);
   return (
     <section className="container mt-5 mb-5">
       <div>

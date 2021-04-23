@@ -91,6 +91,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
+    auth: state.auth
   };
 };
 

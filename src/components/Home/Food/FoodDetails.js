@@ -13,7 +13,7 @@ const FoodDetails = (props) => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [category, setCategory] = useState([]);
-  const { name, description, price, image, foodId } = item;
+  const { name, description, price, image } = item;
   const { cart, addToCart, removeFromCart } = props;
 
   useEffect(() => {

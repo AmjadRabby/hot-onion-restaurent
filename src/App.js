@@ -6,6 +6,8 @@ import FoodDetails from "./components/Home/Food/FoodDetails";
 import NoMatch from "./components/NoMatch/NoMatch";
 import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
+import DeliveryDetails from "./components/DeliveryDetails/DeliveryDetails";
+import PrivateRoute from "./components/Login/PrivateRoute";
 
 function App() {
   return (
@@ -20,9 +22,12 @@ function App() {
         <Route path="/cart-review">
           <Cart />
         </Route>
-        <Route exact path="/home">
+        <Route path="/home">
           <Home />
         </Route>
+        <PrivateRoute path="/delivery-details">
+          <DeliveryDetails />
+        </PrivateRoute>
         <Route exact path="/">
           <Home />
         </Route>

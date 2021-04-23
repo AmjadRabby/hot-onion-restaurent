@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeFromCart } from "../../redux/actions/cartAction";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -7,14 +8,18 @@ import "./Cart.css";
 
 const Cart = (props) => {
   const { cart, removeFromCart } = props;
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + parseInt(item.food.price),
+    0
+  );
   return (
     <main>
       <Header />
       <section className="container">
-        {cart.map((item) => (
-          <div className="row">
-            <div className="col-md-8">
-              <div class="card bg-light shadow border-0 mb-3">
+        <div className="row">
+          <div className="col-md-9">
+            {cart.map((item) => (
+              <div key={item.cartId} class="card bg-light shadow border-0 mb-3">
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img
@@ -40,14 +45,34 @@ const Cart = (props) => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-4">
-              <div className="cart">
-
-              </div>
+            ))}
+          </div>
+          <div
+            className={
+              cart.length === 0
+                ? "d-none"
+                : "col-md-3 d-flex justify-content-center"
+            }
+          >
+            <div className="cart rounded shadow bg-light p-3">
+              <h4 className="">Order Summary</h4>
+              <p className="font-weight-bold">Food Ordered: {cart.length}</p>
+              <p className="font-weight-bold">Total Amount: ${totalAmount}</p>
+              <Link
+                to="/delivery-details"
+                className="btn btn-danger rounded-pill px-4"
+              >
+                Proceed Checkout
+              </Link>
             </div>
           </div>
-        ))}
+        </div>
+
+        {cart.length === 0 && (
+          <h4 className="text-center text-danger">
+            Cart item is empty <br /> plzz add your favorite food
+          </h4>
+        )}
       </section>
       <Footer />
     </main>
