@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./login.css";
 import logo from "../../images/logo2.png";
 import firebase from "firebase/app";
@@ -16,8 +16,7 @@ if (firebase.apps.length === 0) {
 
 const Login = (props) => {
   const [newUser, setNewUser] = useState(false);
-  const [logInUser, setLogInUser] = useState({});
-  // console.log(props);
+
   const { auth, setRegisterSuccess, setLoginSuccess } = props;
   const {
     register,
@@ -27,13 +26,14 @@ const Login = (props) => {
   } = useForm({
     mode: "onTouched",
   });
-  let history = useHistory();
-  let location = useLocation();
-
-  let { from } = location.state || { from: { pathname: "/" } };
-
+  const history = useHistory();
+  const location = useLocation();
   const password = useRef({});
   password.current = watch("password", "");
+  const { from } = location.state || { from: { pathname: "/" } };
+  useEffect(() => {
+    setNewUser(location.pathname === "/register");
+  }, [location.pathname]);
 
   const onSubmit = (data) => {
     if (newUser) {
@@ -42,15 +42,13 @@ const Login = (props) => {
         .createUserWithEmailAndPassword(data.email, data.password)
         .then((userCredential) => {
           var user = userCredential.user;
-          // console.log(user);
           setRegisterSuccess(user);
-          setLogInUser(user);
           updateUserName(data.name);
           verifyEmail();
-           history.replace(from);
+          history.replace(from);
         })
         .catch((error) => {
-          console.log(error.message);
+          alert(error.message);
         });
     }
     if (!newUser) {
@@ -58,19 +56,19 @@ const Login = (props) => {
         .auth()
         .signInWithEmailAndPassword(data.email, data.password)
         .then((userCredential) => {
-          var user = userCredential.user;
+          const user = userCredential.user;
           setLoginSuccess(user);
-          setLogInUser(user);
-           history.replace(from);
+          history.replace(from);
         })
         .catch((error) => {
-          console.log(error.message);
+          alert(error.message);
+          history.replace("/register");
         });
     }
   };
 
   const updateUserName = (name) => {
-    var user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
     user
       .updateProfile({
         displayName: name,
@@ -85,15 +83,14 @@ const Login = (props) => {
       });
   };
   const verifyEmail = () => {
-    var user = firebase.auth().currentUser;
-
+    const user = firebase.auth().currentUser;
     user
       .sendEmailVerification()
       .then(function () {
-        // Email sent.
+        console.log(" Verification email sent successfully");
       })
       .catch(function (error) {
-        // An error happened.
+        console.log(error);
       });
   };
   const resetPassword = (email) => {
@@ -104,7 +101,7 @@ const Login = (props) => {
         // Email sent.
       })
       .catch(function (error) {
-        // An error happened.
+        console.log(error);
       });
   };
 
@@ -114,7 +111,6 @@ const Login = (props) => {
         <Link to="/" className="text-decoration-none">
           <img src={logo} alt="" className="img-fluid w-75 mb-5 " />
         </Link>
-        <p>{auth.email}</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           {newUser && (
             <div className="form-group mb-3">
@@ -128,7 +124,7 @@ const Login = (props) => {
                   required: "This Field is required",
                   minLength: {
                     value: 6,
-                    message: "please enter a minimun length 6 character",
+                    message: "please enter a minimum length 6 character",
                   },
                 })}
               />
@@ -204,7 +200,7 @@ const Login = (props) => {
           )}
           {!newUser ? (
             <p
-              onClick={() => resetPassword(logInUser.email)}
+              onClick={() => resetPassword(auth.email)}
               className="d-flex justify-content-end text-danger btn m-0 p-1"
             >
               Reset Password

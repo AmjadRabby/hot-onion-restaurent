@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Food = (props) => {
   const [foods, setFoods] = useState([]);
   const [category, setCategory] = useState("lunch");
-  const { cart } = props;
+  const { cart, addToCart } = props;
 
   useEffect(() => {
     const selected = data.filter((food) => food.category === category);
@@ -53,14 +53,16 @@ const Food = (props) => {
       </div>
       <div className="row">
         {foods.map((food) => (
-          <FoodItem food={food} key={food.foodId} />
+          <FoodItem addToCart={addToCart} food={food} key={food.foodId} />
         ))}
       </div>
       <div className="text-center">
         <Link
           to="/delivery-details"
           className={
-            cart.length ? "btn btn-danger px-5" : "btn btn-secondary px-5"
+            cart.length
+              ? "btn btn-danger px-5"
+              : "btn btn-secondary disabled px-5"
           }
         >
           Checkout your food

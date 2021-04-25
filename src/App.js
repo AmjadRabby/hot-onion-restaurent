@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home/Home";
 import FoodDetails from "./components/Home/Food/FoodDetails";
 import NoMatch from "./components/NoMatch/NoMatch";
-import Login from "./components/Login/Login";
+import Login from "./components/Auth/Login";
 import Cart from "./components/Cart/Cart";
 import DeliveryDetails from "./components/DeliveryDetails/DeliveryDetails";
-import PrivateRoute from "./components/Login/PrivateRoute";
+import PrivateRoute from "./components/Auth/PrivateRoute";
+import OrderComplete from "./components/OrderComplete/OrderComplete";
 
 function App() {
   return (
@@ -19,15 +20,21 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/register">
+          <Login />
+        </Route>
         <Route path="/cart-review">
           <Cart />
-        </Route>
-        <Route path="/home">
-          <Home />
         </Route>
         <PrivateRoute path="/delivery-details">
           <DeliveryDetails />
         </PrivateRoute>
+        <PrivateRoute path="/order-complete">
+          <OrderComplete />
+        </PrivateRoute>
+        <Route path="/home">
+          <Home />
+        </Route>
         <Route exact path="/">
           <Home />
         </Route>

@@ -1,7 +1,7 @@
-// import { REGISTER_SUCCESS } from "../actions/authAction";
 import {
   ADD_TO_CART,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_SUCCESS,
   REMOVE_FROM_CART,
 } from "../actions/cartAction";
@@ -11,11 +11,9 @@ const initialState = {
   auth: {},
   isLoggedIn: false,
 };
-console.log(initialState.isLoggedIn);
 
 const cartReducers = (state = initialState, action) => {
   switch (action.type) {
-    
     //cart reducers
     case ADD_TO_CART:
       const newItem = {
@@ -40,6 +38,8 @@ const cartReducers = (state = initialState, action) => {
         ...state,
         auth: action.payload,
       };
+    case LOGOUT:
+      return { ...state, auth: {} };
 
     default:
       return state;

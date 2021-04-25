@@ -19,22 +19,22 @@ const Cart = (props) => {
         <div className="row">
           <div className="col-md-9">
             {cart.map((item) => (
-              <div key={item.cartId} class="card bg-light shadow border-0 mb-3">
-                <div class="row g-0">
-                  <div class="col-md-4">
+              <div key={item.cartId} className="card bg-light shadow border-0 mb-3">
+                <div className="row g-0">
+                  <div className="col-md-4">
                     <img
                       src={item.food.image}
                       alt="..."
                       className="img-fluid p-2"
                     />
                   </div>
-                  <div class="col-md-8">
-                    <div class="card-body p-3">
-                      <h5 class="card-title">{item.food.name}</h5>
-                      <small class="card-text text-secondary">
+                  <div className="col-md-8">
+                    <div className="card-body p-3">
+                      <h5 className="card-title">{item.food.name}</h5>
+                      <small className="card-text text-secondary">
                         {item.food.description}
                       </small>
-                      <p class="card-text mt-2">{item.food.price}</p>
+                      <p className="card-text mt-2">{item.food.price}</p>
                       <button
                         onClick={() => removeFromCart(item.cartId)}
                         className="btn btn-danger rounded-pill px-4"

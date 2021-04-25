@@ -8,6 +8,10 @@
   right: 0;
   z-index: 9999;
 }
+.profile-img {
+  width: 2.2rem;
+}
+
 .banner {
   position: relative;
   top: 70px;

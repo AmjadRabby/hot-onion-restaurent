@@ -46,7 +46,7 @@ const FoodDetails = (props) => {
   };
   return (
     <main>
-      <Header/>
+      <Header />
       <section className="container">
         <div className="row mb-5">
           <div className="col-md-6 ">
@@ -63,7 +63,6 @@ const FoodDetails = (props) => {
                     -
                   </h2>
                   <h6 className="px-4 w-100">{cart.length}</h6>
-
                   <h4
                     className="brand-color-hover"
                     onClick={() => addToCart(item)}
@@ -73,8 +72,8 @@ const FoodDetails = (props) => {
                 </div>
               </div>
               <Link
-                to="/"
-                onClick={() => addToCart(item)}
+                to="/cart-review"
+                // onClick={() => addToCart(item)}
                 className={
                   cart.length
                     ? "btn bg-danger d-flex w-25 align-items-center rounded-pill font-weight-bold text-white px-4"
@@ -109,7 +108,7 @@ const FoodDetails = (props) => {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </main>
   );
 };

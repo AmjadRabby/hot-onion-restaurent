@@ -5,6 +5,7 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 //auth type
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT = "LOGOUT";
 
 //cart action
 export const addToCart = (food) => {
@@ -34,4 +35,8 @@ export const registerSuccess = (user) => {
     payload: user,
   };
 };
-
+export const logout = () => {
+  return {
+    type: LOGOUT
+  }
+}
