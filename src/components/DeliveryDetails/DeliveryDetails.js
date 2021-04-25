@@ -7,12 +7,12 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
 import { Link } from "react-router-dom";
 
 const DeliveryDetails = (props) => {
-  const [valid, setValid] = useState(false)
+  const [validation, setValidation] = useState(false);
   const { cart, addToCart, removeFromCart } = props;
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isDirty },
   } = useForm();
   const totalAmount = cart.reduce(
     (sum, item) => sum + parseInt(item.food.price),
@@ -20,8 +20,10 @@ const DeliveryDetails = (props) => {
   );
   const onSubmit = (data) => {
     console.log(data);
-    setValid(true);
+    setValidation(true);
   };
+
+  // console.log(isValid, isDirty);
   return (
     <main className="">
       <Header />
@@ -29,7 +31,9 @@ const DeliveryDetails = (props) => {
         <div className="row">
           <div className="col-md-7">
             <div className="details">
-              <h4 className="border-bottom pb-2 mb-4">Edit Delivery Details</h4>
+              <h4 className="border-bottom pb-2 mb-4">
+                First Edit Delivery Details
+              </h4>
               <form onSubmit={handleSubmit(onSubmit)} className="form">
                 <input
                   type="text"
@@ -81,7 +85,7 @@ const DeliveryDetails = (props) => {
                   name=""
                   id=""
                   className={
-                    isValid
+                    isDirty
                       ? "form-control btn btn-danger border-0"
                       : "form-control btn btn-secondary border-0 disabled"
                   }
@@ -102,43 +106,51 @@ const DeliveryDetails = (props) => {
               {cart.map((item) => (
                 <div
                   key={item.cartId}
-                  class="card bg-light shadow-sm border-0 mb-3"
+                  className="card bg-light shadow-sm border-0 mb-3"
                 >
-                  <div class="row g-0">
-                    <div class="col-md-4">
+                  <div className="row g-0">
+                    <div className="col-md-4">
                       <img
                         src={item.food.image}
                         alt="..."
                         className="img-fluid p-2"
                       />
                     </div>
-                    <div class="col-md-5">
-                      <div class="card-body p-0">
-                        <p class="card-title mb-2">{item.food.name}</p>
-                        <p class="card-text font-weight-bold text-danger m-0">
+                    <div className="col-md-5">
+                      <div className="card-body p-0">
+                        <p className="card-title mb-2">{item.food.name} </p>
+                        <p className="card-text font-weight-bold text-danger m-0">
                           ${item.food.price}
                         </p>
                         <small className="text-muted">Delivery free</small>
                       </div>
                     </div>
-                    <div className="col-md-3 d-flex justify-content-center align-items-center">
-                      <div className="">
-                        <span
-                          className="brand-color-hover"
-                          // onClick={() => removeFromCart(cart.cartId)}
-                        >
-                          -
-                        </span>
-                        <span className="bg-white font-weight-bold rounded mx-2 p-1 px-2">
-                          {cart.length}
-                        </span>
+                    <div className="col-md-3 ">
+                      <p
+                        onClick={() => removeFromCart(item.cartId)}
+                        className="d-flex justify-content-end font-weight-bold btn"
+                      >
+                        X
+                      </p>
+                      <div className="d-flex justify-content-center align-items-center">
+                        <div className="">
+                          <span
+                            className="brand-color-hover"
+                            // onClick={() => removeFromCart(cart.cartI)}
+                          >
+                            -
+                          </span>
+                          <span className="bg-white font-weight-bold rounded mx-2 p-1 px-2">
+                            {cart.length}
+                          </span>
 
-                        <span
-                          className="brand-color-hover"
-                          // onClick={() => addToCart(item)}
-                        >
-                          +
-                        </span>
+                          <span
+                            className="brand-color-hover"
+                            onClick={() => addToCart(item)}
+                          >
+                            +
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -167,7 +179,7 @@ const DeliveryDetails = (props) => {
                 <Link
                   to="/order-complete"
                   className={
-                    valid
+                    validation
                       ? "btn btn-danger rounded h-25 w-100"
                       : "btn btn-secondary rounded h-25 w-100 disabled"
                   }

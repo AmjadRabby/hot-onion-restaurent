@@ -17,24 +17,27 @@ const Cart = (props) => {
       <Header />
       <section className="container">
         <div className="row">
-          <div className="col-md-9">
+          <div className="col-md-9" mb="true">
             {cart.map((item) => (
-              <div key={item.cartId} className="card bg-light shadow border-0 mb-3">
-                <div className="row g-0">
-                  <div className="col-md-4">
+              <div
+                key={item.cartId}
+                className="card food-cart bg-light shadow border-0 mb-3 "
+              >
+                <div className="row">
+                  <div className="col-md-3">
                     <img
                       src={item.food.image}
                       alt="..."
-                      className="img-fluid p-2"
+                      className="img-fluid w-100 p-1"
                     />
                   </div>
                   <div className="col-md-8">
-                    <div className="card-body p-3">
+                    <div className="card-body p-2">
                       <h5 className="card-title">{item.food.name}</h5>
                       <small className="card-text text-secondary">
                         {item.food.description}
                       </small>
-                      <p className="card-text mt-2">{item.food.price}</p>
+                      <p className="card-text mt-1 mb-1">{item.food.price}</p>
                       <button
                         onClick={() => removeFromCart(item.cartId)}
                         className="btn btn-danger rounded-pill px-4"
@@ -60,7 +63,7 @@ const Cart = (props) => {
               <p className="font-weight-bold">Total Amount: ${totalAmount}</p>
               <Link
                 to="/delivery-details"
-                className="btn btn-danger rounded-pill px-4"
+                className="btn btn-danger rounded px-4"
               >
                 Proceed Checkout
               </Link>

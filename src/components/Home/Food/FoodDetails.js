@@ -81,7 +81,7 @@ const FoodDetails = (props) => {
                 }
               >
                 {" "}
-                <FaCartPlus className="mr-2" /> ADD
+                <FaCartPlus className="mr-2" /> CART
               </Link>
             </div>
 
